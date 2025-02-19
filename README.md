@@ -2,6 +2,8 @@
 
 Diese Anwendung ist eine einfache ToDo-Liste, die in C# geschrieben wurde. Sie ermöglicht es, Aufgaben hinzuzufügen, zu entfernen, anzuzeigen und zu speichern. Die Aufgaben werden in einer CSV-Datei gespeichert, sodass sie auch nach dem Beenden des Programms erhalten bleiben.
 
+![ToDo-App](images/todo-app.png)
+
 ## Funktionen
 - **Aufgabe hinzufügen**: Neue Aufgaben können zur Liste hinzugefügt werden.
 - **Aufgabe entfernen**: Bestehende Aufgaben lassen sich anhand ihrer Nummer löschen.
