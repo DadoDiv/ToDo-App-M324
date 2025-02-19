@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ToDo-App M324")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60769ae2f5b46e2719fc25d9b9b65514bb1f7d0c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98b59c469f35bfd79723e028c995b554a8ed4b06")]
 [assembly: System.Reflection.AssemblyProductAttribute("ToDo-App M324")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ToDo-App M324")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
