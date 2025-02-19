@@ -1,4 +1,4 @@
-# ToDo-Listen Anwendung
+# ToDo-App
 
 Diese Anwendung ist eine einfache ToDo-Liste, die in C# geschrieben wurde. Sie ermöglicht es, Aufgaben hinzuzufügen, zu entfernen, anzuzeigen und zu speichern. Die Aufgaben werden in einer CSV-Datei gespeichert, sodass sie auch nach dem Beenden des Programms erhalten bleiben.
 
