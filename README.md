@@ -8,18 +8,6 @@ Diese Anwendung ist eine einfache ToDo-Liste, die in C# geschrieben wurde. Sie e
 - **Aufgaben anzeigen**: Die aktuelle ToDo-Liste wird in der Konsole ausgegeben.
 - **Aufgaben speichern**: Alle Aufgaben werden in einer CSV-Datei gespeichert, sodass sie beim nächsten Start wieder verfügbar sind.
 
-## Installation & Nutzung
-1. **Code klonen**: 
-   ```sh
-   git clone https://github.com/dein-nutzername/dein-repo.git
-   ```
-2. **Projekt öffnen**: 
-   Öffne das Projekt in einer IDE wie Visual Studio oder nutze die Kommandozeile.
-3. **Kompilieren & Ausführen**:
-   ```sh
-   dotnet run
-   ```
-
 ## Dateispeicherung
 Die Aufgaben werden in der Datei `todo_list.csv` gespeichert. Falls die Datei existiert, werden beim Start des Programms die bestehenden Aufgaben geladen.
 
