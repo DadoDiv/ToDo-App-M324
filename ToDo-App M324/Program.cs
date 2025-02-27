@@ -18,10 +18,11 @@ class Program
             Console.WriteLine("2. Aufgabe entfernen");
             Console.WriteLine("3. Aufgaben anzeigen");
             Console.WriteLine("4. Aufgaben speichern");
-            Console.WriteLine("5. Beenden");
+            Console.WriteLine("5. Alle Tasks entfernen");
+            Console.WriteLine("6. Beenden");
             Console.Write("Auswahl: ");
 
-            string choice = Console.ReadLine();
+            var choice = Console.ReadLine();
             switch (choice)
             {
                 case "1":
@@ -38,6 +39,9 @@ class Program
                     Console.WriteLine("Aufgaben gespeichert!");
                     break;
                 case "5":
+                    DeleteAllTasks();
+                    break;
+                case "6":
                     SaveTasks();
                     return;
                 default:
@@ -63,7 +67,7 @@ class Program
     static void AddTask()
     {
         Console.Write("Neue Aufgabe: ");
-        string task = Console.ReadLine();
+        var task = Console.ReadLine();
         if (!string.IsNullOrWhiteSpace(task))
         {
             tasks.Add(task);
@@ -100,5 +104,20 @@ class Program
                 Console.WriteLine($"{i + 1}. {tasks[i]}");
             }
         }
+    }
+
+    static void DeleteAllTasks()
+    {
+        Console.Write("Sind Sie sich sicher, dass Sie ALLE Tasks löschen wollen? y/n:");
+        var input = Console.ReadKey();
+        Console.WriteLine();
+
+        if (input.Key != ConsoleKey.Y)
+        {
+            return;
+        }
+        
+        tasks.Clear();
+        Console.WriteLine("Alle Tasks wurden erfolgreich gelöscht.");
     }
 }
