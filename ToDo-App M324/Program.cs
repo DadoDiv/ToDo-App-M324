@@ -5,20 +5,20 @@ using System.IO;
 class Program
 {
     static string filePath = "todo_list.csv";
-    static List<string> tasks = new List<string>();
+    static List<string> toDos = new List<string>();
 
     static void Main()
     {
-        LoadTasks();
+        LoadToDos();
 
         while (true)
         {
             Console.WriteLine("\nToDo-Liste: ");
-            Console.WriteLine("1. Aufgabe hinzufügen");
-            Console.WriteLine("2. Aufgabe entfernen");
-            Console.WriteLine("3. Aufgaben anzeigen");
-            Console.WriteLine("4. Aufgaben speichern");
-            Console.WriteLine("5. Alle Tasks entfernen");
+            Console.WriteLine("1. ToDo hinzufügen");
+            Console.WriteLine("2. ToDo entfernen");
+            Console.WriteLine("3. ToDos anzeigen");
+            Console.WriteLine("4. ToDos speichern");
+            Console.WriteLine("5. Alle ToDos entfernen");
             Console.WriteLine("6. Beenden");
             Console.Write("Auswahl: ");
 
@@ -26,23 +26,23 @@ class Program
             switch (choice)
             {
                 case "1":
-                    AddTask();
+                    AddToDo();
                     break;
                 case "2":
-                    RemoveTask();
+                    RemoveToDo();
                     break;
                 case "3":
-                    ShowTasks();
+                    ShowToDos();
                     break;
                 case "4":
-                    SaveTasks();
-                    Console.WriteLine("Aufgaben gespeichert!");
+                    SaveToDos();
+                    Console.WriteLine("ToDos gespeichert!");
                     break;
                 case "5":
-                    DeleteAllTasks();
+                    DeleteAllToDos();
                     break;
                 case "6":
-                    SaveTasks();
+                    SaveToDos();
                     return;
                 default:
                     Console.WriteLine("Ungültige Auswahl!");
@@ -51,38 +51,38 @@ class Program
         }
     }
 
-    static void LoadTasks()
+    static void LoadToDos()
     {
         if (File.Exists(filePath))
         {
-            tasks = new List<string>(File.ReadAllLines(filePath));
+            toDos = new List<string>(File.ReadAllLines(filePath));
         }
     }
 
-    static void SaveTasks()
+    static void SaveToDos()
     {
-        File.WriteAllLines(filePath, tasks);
+        File.WriteAllLines(filePath, toDos);
     }
 
-    static void AddTask()
+    static void AddToDo()
     {
-        Console.Write("Neue Aufgabe: ");
-        var task = Console.ReadLine();
-        if (!string.IsNullOrWhiteSpace(task))
+        Console.Write("Neue ToDo: ");
+        var ToDo = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(ToDo))
         {
-            tasks.Add(task);
-            Console.WriteLine("Aufgabe hinzugefügt!");
+            toDos.Add(ToDo);
+            Console.WriteLine("ToDo hinzugefügt!");
         }
     }
 
-    static void RemoveTask()
+    static void RemoveToDo()
     {
-        ShowTasks();
-        Console.Write("Nummer der zu löschenden Aufgabe: ");
-        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= tasks.Count)
+        ShowToDos();
+        Console.Write("Nummer der zu löschenden ToDo: ");
+        if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= toDos.Count)
         {
-            tasks.RemoveAt(index - 1);
-            Console.WriteLine("Aufgabe entfernt!");
+            toDos.RemoveAt(index - 1);
+            Console.WriteLine("ToDo entfernt!");
         }
         else
         {
@@ -90,25 +90,25 @@ class Program
         }
     }
 
-    static void ShowTasks()
+    static void ShowToDos()
     {
-        Console.WriteLine("\nAktuelle Aufgaben:");
-        if (tasks.Count == 0)
+        Console.WriteLine("\nAktuelle ToDos:");
+        if (toDos.Count == 0)
         {
-            Console.WriteLine("Keine Aufgaben vorhanden.");
+            Console.WriteLine("Keine ToDos vorhanden.");
         }
         else
         {
-            for (int i = 0; i < tasks.Count; i++)
+            for (int i = 0; i < toDos.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {tasks[i]}");
+                Console.WriteLine($"{i + 1}. {toDos[i]}");
             }
         }
     }
 
-    static void DeleteAllTasks()
+    static void DeleteAllToDos()
     {
-        Console.Write("Sind Sie sich sicher, dass Sie ALLE Tasks löschen wollen? y/n:");
+        Console.Write("Sind Sie sich sicher, dass Sie ALLE ToDos löschen wollen? y/n:");
         var input = Console.ReadKey();
         Console.WriteLine();
 
@@ -117,7 +117,7 @@ class Program
             return;
         }
         
-        tasks.Clear();
-        Console.WriteLine("Alle Tasks wurden erfolgreich gelöscht.");
+        toDos.Clear();
+        Console.WriteLine("Alle ToDos wurden erfolgreich gelöscht.");
     }
 }
