@@ -23,14 +23,11 @@ jobs:
         dotnet-version: 8.0.x
         
     - name: Restore dependencies
-      working-directory: "./ToDo-App M324"
       run: dotnet restore
       
     - name: Build
-      working-directory: "./ToDo-App M324"
       run: dotnet build --no-restore
       
-    #- name: Test
-      #working-directory: "./ToDo-App M324"
-      #run: dotnet test --no-build --verbosity normal
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
       
