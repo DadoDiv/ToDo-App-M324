@@ -25,3 +25,12 @@ Auswahl: 1
 Neue Aufgabe: Hausaufgaben machen
 Aufgabe hinzugefügt!
 ```
+## Docker
+Um die Applikation in einem Docker-Container verfügbar zu machen und sie zu starten benutzt man folgenden Befehl in der Konsole:
+```sh
+docker compose run {name}
+```
+Um den Container und das Image zu löschen benutzt man folgenden Befehl:
+```sh
+docker compose down --rmi local
+```
