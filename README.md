@@ -28,7 +28,7 @@ Aufgabe hinzugefügt!
 ## Docker
 Um die Applikation in einem Docker-Container verfügbar zu machen und sie zu starten benutzt man folgenden Befehl in der Konsole:
 ```sh
-docker compose run {name}
+docker compose up
 ```
 Um den Container und das Image zu löschen benutzt man folgenden Befehl:
 ```sh

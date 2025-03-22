@@ -1,21 +1,26 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
-
-# Kopiere die Projektdateien und wiederherstelle Abhängigkeiten
-COPY ["ToDo-App M324/ToDo-App M324.csproj", "ToDo-App M324/"]
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["ToDo-App M324.API/ToDo-App M324.API.csproj", "ToDo-App M324.API/"]
 COPY ["ToDo-App M324.Application/ToDo-App M324.Application.csproj", "ToDo-App M324.Application/"]
-RUN dotnet restore "ToDo-App M324/ToDo-App M324.csproj"
+RUN dotnet restore "./ToDo-App M324.API/ToDo-App M324.API.csproj"
+COPY . .
+WORKDIR "/src/ToDo-App M324.API"
+RUN dotnet build "./ToDo-App M324.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# Kopiere den Rest des Codes und baue die Anwendung
-COPY . ./
-WORKDIR "/app/ToDo-App M324"
-RUN dotnet build --no-restore -c Release
-RUN dotnet publish --no-restore --no-build -c Release -o /app/publish
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./ToDo-App M324.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# Erstelle ein Laufzeit-Image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/publish .
-
-# Starte die Anwendung
-ENTRYPOINT ["dotnet", "ToDo-App M324.dll"]
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "ToDo-App M324.API.dll"]
