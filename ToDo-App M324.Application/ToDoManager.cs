@@ -1,4 +1,6 @@
-﻿namespace ToDo_App_M324.Application
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ToDo_App_M324.Application
 {
     public class ToDoManager
     {
@@ -9,7 +11,7 @@
             _csvFilePath = csvFilePath;
         }
 
-        public List<string> LoadToDos()
+        public List<string> GetToDos()
         {
             if (File.Exists(_csvFilePath))
             {
@@ -17,6 +19,21 @@
             }
 
             return new List<string>();
+        }
+
+        public string GetToDo(int number)
+        {
+            if (File.Exists(_csvFilePath))
+            {
+                var toDos = File.ReadAllLines(_csvFilePath);
+
+                if (number > 0 && number <= toDos.Length)
+                {
+                    return toDos[number - 1];
+                }
+            }
+
+            return string.Empty;
         }
 
         public void SaveToDos(List<string> toDos)
@@ -34,11 +51,11 @@
             return false;
         }
 
-        public bool RemoveToDo(List<string> toDos, int index)
+        public bool DeleteToDo(List<string> toDos, int number)
         {
-            if (index > 0 && index <= toDos.Count)
+            if (number > 0 && number <= toDos.Count)
             {
-                toDos.RemoveAt(index - 1);
+                toDos.RemoveAt(number - 1);
                 return true;
             }
             else

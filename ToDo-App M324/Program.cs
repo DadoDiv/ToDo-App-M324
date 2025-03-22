@@ -55,7 +55,7 @@ class Program
 
 	static void LoadToDos()
 	{
-		toDos = toDoManager.LoadToDos();
+		toDos = toDoManager.GetToDos();
 	}
 
 	static void SaveToDos()
@@ -77,7 +77,7 @@ class Program
 	{
 		ShowToDos();
 		Console.Write("Nummer der zu löschenden ToDo: ");
-		if (int.TryParse(Console.ReadLine(), out int index) && toDoManager.RemoveToDo(toDos, index))
+		if (int.TryParse(Console.ReadLine(), out int index) && toDoManager.DeleteToDo(toDos, index))
 		{
 			Console.WriteLine("ToDo entfernt!");
 		}

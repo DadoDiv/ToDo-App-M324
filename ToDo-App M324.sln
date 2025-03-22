@@ -5,15 +5,17 @@ VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo-App M324", "ToDo-App M324\ToDo-App M324.csproj", "{40621606-322C-40BE-8C5C-3A08AAA70055}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo-App M324.Tests", "ToDo-App M324.Tests\ToDo-App M324.Tests.csproj", "{C77021B3-5317-4FCC-9DB0-19F1DA0DB8F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo-App M324.Tests", "ToDo-App M324.Tests\ToDo-App M324.Tests.csproj", "{C77021B3-5317-4FCC-9DB0-19F1DA0DB8F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo-App M324.Application", "ToDo-App M324.Application\ToDo-App M324.Application.csproj", "{D5B7D658-A3F4-4107-B273-08859448C4CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo-App M324.Application", "ToDo-App M324.Application\ToDo-App M324.Application.csproj", "{D5B7D658-A3F4-4107-B273-08859448C4CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{D227786F-46EC-423D-9139-F3DC6EB5315F}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo-App M324.API", "ToDo-App M324.API\ToDo-App M324.API.csproj", "{0865B5EE-468C-42F0-83C4-82E22933895F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D5B7D658-A3F4-4107-B273-08859448C4CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5B7D658-A3F4-4107-B273-08859448C4CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5B7D658-A3F4-4107-B273-08859448C4CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0865B5EE-468C-42F0-83C4-82E22933895F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0865B5EE-468C-42F0-83C4-82E22933895F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0865B5EE-468C-42F0-83C4-82E22933895F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0865B5EE-468C-42F0-83C4-82E22933895F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

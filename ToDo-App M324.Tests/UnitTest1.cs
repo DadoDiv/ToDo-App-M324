@@ -32,17 +32,17 @@ namespace ToDo_App_M324.Tests
         public void LoadToDos_FileExists()
         {
             File.WriteAllLines(_testFilePath, new[] { "Task 1", "Task 2" });
-            var todos = _toDoManager.LoadToDos();
-            Assert.AreEqual(2, todos.Count);
-            Assert.AreEqual("Task 1", todos[0]);
-            Assert.AreEqual("Task 2", todos[1]);
+            var todos = _toDoManager.GetToDos();
+            Assert.That(todos.Count, Is.EqualTo(2));
+            Assert.That(todos[0], Is.EqualTo("Task 1"));
+            Assert.That(todos[1], Is.EqualTo("Task 2"));
         }
 
         [Test]
         public void LoadToDos_FileDoesNotExist()
         {
-            var todos = _toDoManager.LoadToDos();
-            Assert.AreEqual(0, todos.Count);
+            var todos = _toDoManager.GetToDos();
+            Assert.That(todos.Count, Is.EqualTo(0));
         }
 
         [Test]
@@ -51,9 +51,9 @@ namespace ToDo_App_M324.Tests
             var todos = new List<string> { "Task A", "Task B" };
             _toDoManager.SaveToDos(todos);
             var fileContent = File.ReadAllLines(_testFilePath);
-            Assert.AreEqual(2, fileContent.Length);
-            Assert.AreEqual("Task A", fileContent[0]);
-            Assert.AreEqual("Task B", fileContent[1]);
+            Assert.That(fileContent.Length, Is.EqualTo(2));
+            Assert.That(fileContent[0], Is.EqualTo("Task A"));
+            Assert.That(fileContent[1], Is.EqualTo("Task B"));
         }
 
         [Test]
@@ -62,8 +62,8 @@ namespace ToDo_App_M324.Tests
             var todos = new List<string>();
             bool result = _toDoManager.AddToDo(todos, "New Task");
             Assert.IsTrue(result);
-            Assert.AreEqual(1, todos.Count);
-            Assert.AreEqual("New Task", todos[0]);
+            Assert.That(todos.Count, Is.EqualTo(1));
+            Assert.That(todos[0], Is.EqualTo("New Task"));
         }
 
         [Test]
@@ -72,26 +72,26 @@ namespace ToDo_App_M324.Tests
             var todos = new List<string>();
             Assert.IsFalse(_toDoManager.AddToDo(todos, ""));
             Assert.IsFalse(_toDoManager.AddToDo(todos, " "));
-            Assert.AreEqual(0, todos.Count);
+            Assert.That(todos.Count, Is.EqualTo(0));
         }
 
         [Test]
         public void RemoveToDo_ValidIndex()
         {
             var todos = new List<string> { "Task 1", "Task 2" };
-            bool result = _toDoManager.RemoveToDo(todos, 1);
+            bool result = _toDoManager.DeleteToDo(todos, 1);
             Assert.IsTrue(result);
-            Assert.AreEqual(1, todos.Count);
-            Assert.AreEqual("Task 2", todos[0]);
+            Assert.That(todos.Count, Is.EqualTo(1));
+            Assert.That(todos[0], Is.EqualTo("Task 2"));
         }
 
         [Test]
         public void RemoveToDo_InvalidIndex()
         {
             var todos = new List<string> { "Task 1" };
-            Assert.IsFalse(_toDoManager.RemoveToDo(todos, 0));
-            Assert.IsFalse(_toDoManager.RemoveToDo(todos, 2));
-            Assert.AreEqual(1, todos.Count);
+            Assert.IsFalse(_toDoManager.DeleteToDo(todos, 0));
+            Assert.IsFalse(_toDoManager.DeleteToDo(todos, 2));
+            Assert.That(todos.Count, Is.EqualTo(1));
         }
 
         [Test]
@@ -99,7 +99,7 @@ namespace ToDo_App_M324.Tests
         {
             var todos = new List<string> { "Task 1", "Task 2" };
             _toDoManager.DeleteAllToDos(todos);
-            Assert.AreEqual(0, todos.Count);
+            Assert.That(todos.Count, Is.EqualTo(0));
         }
     }
 }
